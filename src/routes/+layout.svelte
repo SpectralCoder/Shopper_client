@@ -1,12 +1,20 @@
 <script>
-    import "./styles.css";
-    import Nav from "./nav.svelte"
+   import { goto } from '$app/navigation';
+   import { browser } from '$app/environment';
+   import {isLoggedIn} from '../lib/store/UserStore';
+   import "./styles.css";
+   import Nav from "./nav.svelte";
+   $: if (browser && !$isLoggedIn){
+      goto('/login');
+    }
+
+
 </script>
-<div class="app bg-[#fafafa]" data-theme="lemonade">
-   <div class="flex flex-col p-8 w-[20%] h-full bg-accent">
+<div class="app" data-theme="lemonade">
+   <div class="{$isLoggedIn?"flex flex-col p-8 w-[20%] h-full bg-[#fafafa]":"hidden"}">
       <Nav/>
   </div>
-  <div class="flex flex-1">
+  <div class="flex flex-1 w-full h-full bg-[#F2F7FF]">
       <slot />
   </div>
 </div>
