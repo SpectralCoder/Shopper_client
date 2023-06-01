@@ -65,7 +65,7 @@
 </script>
 
 <div class="md:mx-6 md:px-12 md:py-4 w-full h-full">
-	<div class="w-full h-4 mb-2 bg-gradient-to-r from-[#a8e063] to-[#56ab2f]" />
+	<div class="w-full pt-6 mt-2 h-4 mb-2 bg-gradient-to-r from-[#a8e063] to-[#56ab2f]" />
 	<img class="mx-auto w-48 mb-2" src="shopperFavIcon.svg" alt="logo" />
 	<form class="p-4">
 		<div class="grid grid-cols-2">
@@ -104,7 +104,7 @@
 		</div>
 	</form>
 	<div class="flex items-center justify-between pb-6" on:click={() => (flipped = !flipped)}>
-		<p class="mb-0 mr-2">Already have an account?</p>
+		<p class="mb-0 mr-2 text-primary pl-6">Already have an account?</p>
 		<button
 			type="button"
 			class="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"

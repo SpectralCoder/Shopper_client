@@ -23,7 +23,7 @@
 					<div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
 						<div class="g-0 lg:flex lg:flex-wrap">
 							<div
-								class="flex items-center rounded-t-lg lg:w-6/12 lg:rounded-l-lg lg:rounded-tr-none"
+								class="hidden items-center rounded-t-lg lg:w-6/12 lg:rounded-l-lg lg:rounded-tr-none lg:flex "
 								style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
 							>
 								<div class="px-4 py-6 text-white md:mx-6 md:p-12">
