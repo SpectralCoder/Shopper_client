@@ -1,7 +1,7 @@
 <script>
 	import Input from '../../lib/components/Input.svelte';
 	export let flipped;
-
+	let error = {};
 	let data = [
 		{
 			key: 'name',
@@ -53,15 +53,91 @@
 		}
 	];
 
-	function validateCheck(type, key, value) {
-		return;
-		if (type === 'int' && key === 'phone') {
-			//write code validate a bangladeshi phone number
-
+	function validateCheck(type, key, value, addErr = true) {
+		console.info(key,value, addErr);
+		if (key == 'phone') {
+			const regex = /^(\+88|0088)?(01){1}[3456789]{1}(\d){8}$/;
+			let parsedInt = parseInt(value)
+			if (!isNaN(parsedInt) && regex.test(parsedInt) && value) {
+				console.info(value);
+				if (key in error) {
+					delete error[key];
+				}
+			} else if (addErr) {
+				error[key] = 'Input a valid number';
+			}
+		} else if (key == 'email') {
+			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (emailPattern.test(value)) {
+				if (key in error) {
+					delete error[key];
+				}
+			} else if (addErr) {
+				error[key] = 'Input a valid email';
+			}
+		} else if (key == 'password') {
+			const lengthPattern = /^.{6,}$/;
+			const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+			const numberPattern = /[0-9]/;
+			if (
+				lengthPattern.test(value) &&
+				specialCharPattern.test(value) &&
+				numberPattern.test(value)
+			) {
+				if (key in error) {
+					delete error[key];
+				}
+			} else if (addErr) {
+				error[key] =
+					'Input must be greater than 6 digit and have atleast a number and special character';
+			}
+		} else if (key == 'cpassword') {
+			let pass = '';
+			for (let i = 0; i < data.length; i++) {
+				if (data[i].key == 'password') {
+					pass = data[i].value;
+					break;
+				}
+			}
+			if (value == pass && value) {
+				if (key in error) {
+					delete error[key];
+				}
+			} else if (addErr) {
+				error[key] = "doesn't match with the password";
+			}
+		} else if (key == 'nid_no') {
+			let parsedInt = parseInt(value)
+			if (Number.isInteger(parsedInt)) {
+				if (key in error) {
+					console.info(error);
+					delete error[key];
+					console.info(error);
+				}
+			} else if (addErr) {
+				error[key] = 'Please, Input a valid NID no.';
+			}
+		} else if (key == 'name') {
+			const regex = /^[A-Za-z\s']+$/;
+			if (regex.test(value)) {
+				if (key in error) {
+					delete error[key];
+				}
+			} else if (addErr) {
+				error[key] = 'Input a valid name';
+			}
 		}
+
+		error = error;
 	}
 
-	//need to create a loop for rendering these items
+	function submitData() {
+		for (let i = 0; i < data.length; i++) {
+			validateCheck(data[i].type, data[i].key, data[i].value);
+		}
+		if (Object.keys(error).length > 0) return;
+		console.info('will submit data');
+	}
 </script>
 
 <div class="md:mx-6 md:px-12 md:py-4 w-full h-full">
@@ -75,16 +151,21 @@
 						type="{item.type}"
 						bind:inputValue={item.value}
 						placeholder={item.placeholder}
-						onInput={() => validateCheck(item.type, item.key, item.value)}
+						onInput={() => validateCheck(item.type, item.key, item.value, false)}
 					/>
-
 					<label
 						for="exampleFormControlInput1"
 						class="w-full pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[-1rem] leading-[1.6] text-neutral-500 transition-all duration-200 text-left pl-2 py-2   {item.value
-							? 'scale-[0.8] ease-out text-primary translate-y-[-1rem] motion-reduce:transition-none pl-0'
-							: 'border border-primary rounded-lg peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem]'} peer-focus:border-none peer-focus:pl-0"
+							? "scale-[0.8] ease-out text-primary translate-y-[-1rem] motion-reduce:transition-none pl-0"
+							: `border ${error[item.key]?"border-error":"border-primary"} rounded-lg peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem]`} peer-focus:border-none peer-focus:pl-0"
 						>{item.title}
 					</label>
+					{#if error[item.key] && item.value}
+					<div class="text-error text-xs text-left">
+						{error[item.key]}
+					</div>
+						
+					{/if}
 				</div>
 			{/each}
 		</div>
@@ -98,6 +179,7 @@
 				style="
       background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
     "
+				on:click={submitData}
 			>
 				sign up
 			</button>
