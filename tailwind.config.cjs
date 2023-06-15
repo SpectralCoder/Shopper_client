@@ -3,8 +3,27 @@ module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			colors: {
+				mono: {
+				  'snow': '#F9FAFB',
+				  'gainsboro': '#DCDCDC',
+				  'platinum': '#E5E4E2',
+				  'silver': '#C0C0C0',
+				  'charcoal': '#464646',
+				  'onyx': '#353535',
+				  'black': '#000000',
+				  'white': '#FAFAFA',
+				  'light-gray': '#E5E5E5',
+				  'gray': '#CCCCCC',
+				  'dark-gray': '#555555',
+				  'black': '#222222',
+				},
+			  },
+
 			fontFamily: {
 				'poppins': ['Poppins'],
+				sans: ['Helvetica', 'Arial', 'sans-serif'],
+				serif: ['Georgia', 'Times New Roman', 'serif'],
 			},
       fontSize: {        
         'header': ['64px', {

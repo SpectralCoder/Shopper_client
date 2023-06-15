@@ -23,10 +23,9 @@
 					<div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
 						<div class="g-0 lg:flex lg:flex-wrap">
 							<div
-								class="hidden items-center rounded-t-lg lg:w-6/12 lg:rounded-l-lg lg:rounded-tr-none lg:flex "
-								style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
+								class="hidden items-center rounded-t-lg lg:w-6/12 lg:rounded-l-lg lg:rounded-tr-none lg:flex bg-mono-light-gray "
 							>
-								<div class="px-4 py-6 text-white md:mx-6 md:p-12">
+								<div class="px-4 py-6 text-mono-black text-center md:mx-6 md:p-12">
 									<h4 class="mb-6 text-sub-header">The Future of CRM Has Arrived</h4>
 									<p class="text-paragraph">
 										Discover the ultimate CRM solution tailored for your business - ShopperCRM.
