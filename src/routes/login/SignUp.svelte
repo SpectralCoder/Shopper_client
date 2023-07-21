@@ -146,7 +146,7 @@
 	<form class="p-4">
 		<div class="grid grid-cols-2">
 			{#each data as item}
-				<div class="relative mb-6">
+				<div class="relative mb-6 px-3">
 					<Input
 						type="{item.type}"
 						bind:inputValue={item.value}
