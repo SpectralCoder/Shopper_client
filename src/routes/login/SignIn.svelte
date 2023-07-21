@@ -28,14 +28,13 @@
 		<img class="mx-auto w-48" src="shopperFavIcon.svg" alt="logo" />
 		<h4 class="mb-8 mt-1 pb-1 text-2xl font-semibold">
 			<span
-				class="text-transparent text-3xl bg-clip-text bg-gradient-to-r from-[#a8e063] to-[#56ab2f]"
+				class="text-transparent text-3xl bg-clip-text text-[#576319]"
 				>Shopper :</span
 			> Unleash the True Potential of Your Business
 		</h4>
 	</div>
 
 	<form>
-		<p class="mb-4">Please login to your account</p>
 		<!--Username input-->
 		{#each data as item}
 		<div class="relative mb-6">
@@ -47,9 +46,9 @@
 
 			<label
 				for="exampleFormControlInput1"
-				class="w-full pointer-events-none absolute left-0 top-0 mb-0 max-w-[100%] origin-[0_0] truncate pt-[-1rem] leading-[1.6] text-neutral-500 transition-all duration-200 text-left pl-2 py-2   {item.value
-					? 'scale-[0.8] ease-out text-primary translate-y-[-1rem] motion-reduce:transition-none pl-0'
-					: 'border border-primary rounded-lg peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem]'} peer-focus:border-none peer-focus:pl-0"
+				class="w-full pointer-events-none absolute left-0 top-0 mb-0 max-w-[100%] origin-[0_0] truncate pt-[-1rem] leading-[1.6] transition-all duration-200 text-left pl-2 py-2   {item.value
+					? 'scale-[0.8] text-[#576319] ease-out translate-y-[-1rem] motion-reduce:transition-none pl-0'
+					: 'border border-[#576319] rounded-lg peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-[#576319] peer-data-[te-input-state-active]:-translate-y-[0.9rem]'} peer-focus:border-none peer-focus:pl-0"
 				>{item.title}
 			</label>
 		</div>
