@@ -54,11 +54,11 @@
 	];
 
 	function validateCheck(type, key, value, addErr = true) {
-		console.info(key,value, addErr);
 		if (key == 'phone') {
-			const regex = /^(\+88|0088)?(01){1}[3456789]{1}(\d){8}$/;
+			const regex = /^01[1-9][0-9]{8}$/;
 			let parsedInt = parseInt(value)
-			if (!isNaN(parsedInt) && regex.test(parsedInt) && value) {
+			console.log(!isNaN(parsedInt), regex.test(value))
+			if (!isNaN(parsedInt) && regex.test(value) && value) {
 				console.info(value);
 				if (key in error) {
 					delete error[key];
@@ -114,7 +114,9 @@
 					delete error[key];
 					console.info(error);
 				}
-			} else if (addErr) {
+			} else if(value === ""){
+				return;
+			}else if (addErr) {
 				error[key] = 'Please, Input a valid NID no.';
 			}
 		} else if (key == 'name') {
@@ -135,8 +137,9 @@
 		for (let i = 0; i < data.length; i++) {
 			validateCheck(data[i].type, data[i].key, data[i].value);
 		}
+		console.info(data, error)
 		if (Object.keys(error).length > 0) return;
-		console.info('will submit data');
+		console.info('will submit data', data);
 	}
 </script>
 
@@ -182,6 +185,7 @@
 			</button>
 		</div>
 	</form>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="flex items-center justify-between pb-6" on:click={() => (flipped = !flipped)}>
 		<p class="mb-0 mr-2 text-[#576319] pl-6">Already have an account?</p>
 		<button

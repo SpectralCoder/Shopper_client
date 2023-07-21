@@ -21,6 +21,10 @@
 			output_type: 'str'
 		},
 	]
+
+	function submitData() {
+		console.log('data', data);
+	}
 </script>
 
 <div class="md:mx-6 md:px-12 md:py-4 flip-card-front">
@@ -34,7 +38,7 @@
 		</h4>
 	</div>
 
-	<form>
+	<form class="lg:px-12">
 		<!--Username input-->
 		{#each data as item}
 		<div class="relative mb-6">
@@ -61,6 +65,8 @@
 				type="button"
 				data-te-ripple-init
 				data-te-ripple-color="light"
+				on:click={submitData}
+
 			>
 				Log in
 			</button>
