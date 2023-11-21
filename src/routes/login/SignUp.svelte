@@ -1,4 +1,5 @@
 <script>
+	import { isLoggedIn, SignUp } from '../../lib/store/UserStore';
 	import Input from '../../lib/components/Input.svelte';
 	export let flipped;
 	let error = {};
@@ -133,13 +134,24 @@
 		error = error;
 	}
 
-	function submitData() {
+	async function submitData() {
 		for (let i = 0; i < data.length; i++) {
 			validateCheck(data[i].type, data[i].key, data[i].value);
 		}
 		console.info(data, error)
 		if (Object.keys(error).length > 0) return;
-		console.info('will submit data', data);
+		let payload = data.reduce((obj, item) => {
+			if(item.value)
+				obj[item.key] = item.value;
+			else obj[item.key]= null;
+			return obj;
+			}, {});
+			console.log(payload)
+		await SignUp(payload);
+		if($isLoggedIn){
+			goto('/')
+		}
+
 	}
 </script>
 

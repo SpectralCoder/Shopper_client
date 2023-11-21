@@ -1,7 +1,14 @@
 <script>
 	import Input from '$lib/components/Input.svelte';
-
+	import { isLoggedIn } from '../../lib/store/UserStore';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+	import { SignIn} from '../../lib/store/UserStore';
 	export let flipped;
+
+	$: if (browser && $isLoggedIn) {
+		goto('/');
+	}
 
 	let data = [
 		{
@@ -22,8 +29,18 @@
 		},
 	]
 
-	function submitData() {
-		console.log('data', data);
+	async function submitData() {
+		let result = data.reduce((obj, item) => {
+			obj[item.key] = item.value;
+			return obj;
+			}, {});
+		if(await SignIn(result)){
+			isLoggedInUser();
+			goto('/')
+		}
+		else{
+			console.log('failed')
+		}
 	}
 </script>
 

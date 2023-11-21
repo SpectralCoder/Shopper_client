@@ -1,15 +1,6 @@
 <script>
-	import { isLoggedIn } from '../../lib/store/UserStore';
-	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-
 	import SignIn from './SignIn.svelte';
 	import SignUp from './SignUp.svelte';
-
-	$: if (browser && $isLoggedIn) {
-		goto('/');
-	}
-
 	let flipped = false;
 </script>
 
