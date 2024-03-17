@@ -157,7 +157,7 @@
 
 <div class="md:mx-6 md:px-12 md:py-4 w-full h-full">
 	<div class="w-full pt-6 mt-2 h-4 mb-2 bg-[#576319] opacity-80" />
-	<img class="mx-auto w-48 mb-2" src="shopperFavIcon.svg" alt="logo" />
+	<img class="mx-auto w-48 mb-2" src="/shopperFavIcon.svg" alt="logo" />
 	<form class="py-4">
 		<div class="grid grid-cols-2">
 			{#each data as item}

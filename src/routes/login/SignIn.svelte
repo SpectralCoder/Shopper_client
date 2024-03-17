@@ -46,7 +46,7 @@
 
 <div class="md:mx-6 md:px-12 md:py-4 flip-card-front">
 	<div class="text-center">
-		<img class="mx-auto w-48" src="shopperFavIcon.svg" alt="logo" />
+		<img class="mx-auto w-48" src="/shopperFavIcon.svg" alt="logo" />
 		<h4 class="mb-8 mt-1 pb-1 text-2xl font-semibold">
 			<span
 				class="text-transparent text-3xl bg-clip-text text-[#576319]"
