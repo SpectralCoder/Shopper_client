@@ -13,6 +13,18 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
+		alias:{
+			$lib: './src/lib',
+			$components: './src/components',
+			$routes: './src/routes',
+			$stores: './src/lib/store',
+			$utils: './src/lib/utils',
+			$api: './src/lib/api',
+			$models: './src/lib/models',
+			$styles: './src/styles',
+			$assets: './src/assets',
+			$static: './static'
+		},
 	},
 };
 
